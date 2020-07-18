@@ -130,7 +130,7 @@ function SmsSplitCtrl($scope, $http) {
 
   $scope.allEncodings = ["auto", "gsm", "ucs2"];
   $scope.input = $scope.input || "";
-  $scope.encoding = $scope.encoding || "gsm";
+  $scope.encoding = $scope.encoding || "auto";
 
   document.getElementsByTagName("textarea")[0].focus();
 
@@ -150,7 +150,7 @@ function SmsSplitCtrl($scope, $http) {
     var bytes = document.getElementsByClassName("p-" + seg + "-" + charIndex);
     angular.element(bytes).addClass("highlighted-bytes");
     var cp = util.unicodeCodePoints($scope.input)[charIndex].toString(16);
-    var url = "http://unicode.chadrs.me/characters/unicode/U+" + cp + ".json"
+    var url = "https://unicode.chadrs.me/characters/unicode/U+" + cp + ".json"
     $http({
       method: "GET",
       url: url,
